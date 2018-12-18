@@ -3,7 +3,7 @@ package main
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/salapao2136/middleware/handler"
-	"github.com/salapao2136/middleware/middleware"
+	jwt "github.com/salapao2136/middleware/middleware/jwt"
 )
 
 func main() {
@@ -11,7 +11,7 @@ func main() {
 	engine.Use(gin.Logger())
 	engine.Use(gin.Recovery())
 
-	middle := *middleware.NewMiddleware()
+	middle := jwt.NewMiddleware()
 	authorized := engine.Group("/")
 	authorized.Use(middle.Middleware())
 	{
