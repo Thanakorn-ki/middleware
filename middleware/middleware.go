@@ -2,7 +2,6 @@ package middleware
 
 import (
 	"fmt"
-	"os"
 
 	jwt "github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
@@ -10,11 +9,12 @@ import (
 
 type middleware struct{}
 
-// Token
-// eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjU1NTU1IiwidXNlcklkIjoiVUlEMjMyMTMyMTMyMzIxIiwianRpIjoiYWRkMGNmMzMtMzljMC00NzBmLWJhZjQtOTBkNWJmNzllZDRhIiwiaWF0IjoxNTQ1MDM5ODIxLCJleHAiOjE1NDUwNDM0MjF9.iMSjDk1eO0NjYS7rMckqAf_qhY9ECnFHvyijYO_sKeU
-// Expect decode
-// { "id": "55555"  }
-// signature is "secret"
+/* Token
+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjU1NTU1IiwidXNlcklkIjoiVUlEMjMyMTMyMTMyMzIxIiwianRpIjoiYWRkMGNmMzMtMzljMC00NzBmLWJhZjQtOTBkNWJmNzllZDRhIiwiaWF0IjoxNTQ1MDM5ODIxLCJleHAiOjE1NDUwNDM0MjF9.iMSjDk1eO0NjYS7rMckqAf_qhY9ECnFHvyijYO_sKeU
+Expect decode
+{ "id": "55555"  }
+signature is "secret"
+*/
 
 type claims struct {
 	ID string `json:"id"`
@@ -45,13 +45,13 @@ func respondWithError(code int, message string, c *gin.Context) {
 
 func (m middleware) decodeJWT(tokenString string, c *gin.Context) {
 
-	secretKey := os.Getenv("SECRET_KEY")
+	// secretKey := os.Getenv("SECRET_KEY")
 	var secret []byte
-	if secretKey == "" {
-		secret = []byte("secret")
-	} else {
-		secret = []byte(secretKey)
-	}
+	// if secretKey == "" {
+	secret = []byte("")
+	// } else {
+	// 	secret = []byte(secretKey)
+	// }
 
 	token, err := jwt.ParseWithClaims(tokenString, &claims{}, func(token *jwt.Token) (interface{}, error) {
 		if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
