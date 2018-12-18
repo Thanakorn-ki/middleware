@@ -11,7 +11,6 @@ type middleware struct{}
 
 /* Token
 eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjU1NTU1IiwidXNlcklkIjoiVUlEMjMyMTMyMTMyMzIxIiwianRpIjoiYWRkMGNmMzMtMzljMC00NzBmLWJhZjQtOTBkNWJmNzllZDRhIiwiaWF0IjoxNTQ1MDM5ODIxLCJleHAiOjE1NDUwNDM0MjF9.iMSjDk1eO0NjYS7rMckqAf_qhY9ECnFHvyijYO_sKeU
-
 Expect decode
 { "id": "55555"  }
 signature is "secret"
