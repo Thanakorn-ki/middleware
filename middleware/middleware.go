@@ -46,6 +46,7 @@ func respondWithError(code int, message string, c *gin.Context) {
 func (m middleware) decodeJWT(tokenString string, c *gin.Context) {
 
 	// secretKey := os.Getenv("SECRET_KEY")
+
 	var secret []byte
 	// if secretKey == "" {
 	secret = []byte("")
